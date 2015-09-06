@@ -5,18 +5,36 @@
 class Vector
 {
 private:
-	double X;
-	double Y;
+	double x;
+	double y;
 public:
 	Vector();
 	Vector(double,double);
-	void SetX(const double x1)
-	{X= x1;}
-	void SetY(const double y1)
-	{Y = y1;}
-	double GetX()
-	{return X;}
-	double GetY()
-	{return Y;}
+	void SetX(const double x1){x= x1;}
+	void SetY(const double y1){y = y1;}
+	double GetX(){return x;}
+	double GetY(){return y;}
+
+	double length();
+	double length2();
+
+	Vector operator+(Vector& const right);
+	Vector operator-(Vector& const right);
+	Vector operator-();
+	Vector operator*(double scale);
+	Vector operator/(double u);
+	Vector operator/(Vector& const right);
+	
+	double operator&(Vector& const right);
+	double operator^(Vector& const right);
+	double operator%(Vector& const right);
+	Vector operator*(Vector& const right);
+	Vector operator>(Vector& const right);
+	Vector& operator= (Vector val);
+
+	bool operator<(double value);
+	bool operator==(Vector& const right);
+	bool operator!=(Vector& const right);
 };
+Vector Vector_norm(Vector value);
 #endif;

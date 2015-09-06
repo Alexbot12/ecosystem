@@ -11,8 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="colors.h" />
     <ClInclude Include="Headers\animal.h" />
+    <ClInclude Include="Headers\colors.h" />
     <ClInclude Include="Headers\map.h" />
     <ClInclude Include="Headers\fancs.h" />
     <ClInclude Include="Headers\vector.h" />

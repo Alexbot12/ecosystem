@@ -24,10 +24,10 @@
     <ClInclude Include="Headers\animal.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="colors.h">
+    <ClInclude Include="Headers\fancs.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="Headers\fancs.h">
+    <ClInclude Include="Headers\colors.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
   </ItemGroup>

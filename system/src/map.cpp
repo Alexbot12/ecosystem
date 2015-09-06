@@ -1,12 +1,9 @@
-#include<iostream>
-#include<vector>
 #include<Windows.h>
 #include<time.h>
-#include"../glut/glut.h"
 #include"../Headers/map.h"
-#include"../Headers/vector.h"
-#include"../Headers/colors.h"
 #include"../Headers/fancs.h"
+#include"../Headers/colors.h"
+
 
 //Point
 Point::Point()
@@ -178,6 +175,8 @@ void Map::readMap(const char* fail)
 				posr.SetX(readFdigit(F));
 				posr.SetY(readFdigit(F));
 				po.push_back(Point(volr,tr,hr,posr));
+				if(volr == vater)
+					vat.push_back(Point(volr,tr,hr,posr));
 				num_point +=1;
 			}
 		}
@@ -206,8 +205,14 @@ void Map::writeMap(vector <Point> po,const char* fail)
 	else
 	{
 		po[0].writePoint_vol(F);
+		int sys = 0;
 		for(int i=0;i<len;i++)
 		{
+			if(po[i].Getvol() != po[sys].Getvol() )
+			{
+				po[i].writePoint_vol(F);
+				sys = i;
+			}
 			po[i].writePoint_wthisout_vol(F);
 		}
 		fclose(F);
@@ -219,7 +224,6 @@ void Map::genMap(int N, double vol, float p, const char* fail)// ошибка в переда
 	num_point = 0;
 	float x = rand() * time(NULL)/GetTickCount();
 	float y = rand() * time(NULL)/GetTickCount();
-	//float p = (rand() * time_t()/GetTickCount())%2-1;
 	float h = 0;
 	Point poin = Point();
 	FILE * F;
@@ -239,7 +243,10 @@ void Map::genMap(int N, double vol, float p, const char* fail)// ошибка в переда
 			{
 				h = (PerlinNoise(x+i,y+e,p,3)+ 0.2)*20;
 				if(h<0)
+				{
 					poin = Point(vol,vater,h,Vector(i,e));
+					vat.push_back(poin);
+				}
 				if(h>=0 && h<4)
 					poin = Point(vol,sand,h,Vector(i,e));
 				if(h>=4 && h<15)

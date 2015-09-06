@@ -42,11 +42,14 @@ class Map
 private:
 	vector <Point> po; // все пиксели карты
 	int num_point; // количество пикселей
+	vector <Point> vat;
 public:
 	Map();
 	void readMap(const char* fail); // считывание из файла
 	void drawMap(Vector centre); // отрисовка карты
 	void writeMap(vector <Point>,const char*);
 	void genMap(int N, double vol, float p, const char* fail);
+	int GetNumVat() {return vat.size();}
+	Point GetVat(int n) {return vat.at(n);}
 };
 #endif;

@@ -4,6 +4,7 @@
 #include<Windows.h>
 
 #include"../glut/glut.h"
+#include"../Headers/animal.h"
 #include"../Headers/map.h"
 #include"../Headers/vector.h"
 
@@ -13,6 +14,7 @@ int SCENE_W = 1024;
 int SCENE_H = 768;
 
 Map* map1 = NULL;
+
 
 DWORD dt;
 DWORD olddt;
@@ -96,7 +98,7 @@ void keyboard(unsigned char key, int x, int y)
 			stop = !stop;
 			break;
 		case 'r':
-			map1->genMap(50,4,0.5, "test.txt");
+			map1->genMap(100,4,0.5, "test1.txt");
 			break;
 	}
 	glutPostRedisplay();
@@ -159,8 +161,8 @@ int main(int argc, char** argv)
 	cout << "Hellow! \n";
 	/*cin  >> mapf;
 	cout << mapf << endl;*/
-	map1->genMap(50,4,0.5, "test.txt"); // "test.txt"->mapf
-	//map1->readMap("test.txt");
+	//map1->genMap(100,4,0.4, "test11.txt"); // "test.txt"->mapf
+	map1->readMap("test.txt");
 	glutMainLoop();
 	
 	delete map1;
